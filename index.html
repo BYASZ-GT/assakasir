@@ -265,19 +265,51 @@
         .modal-box { background: var(--bg-surface); border: 1px solid var(--border); border-radius: 16px; padding: 22px; width: 450px; max-width: 94vw; box-shadow: 0 24px 60px rgba(0,0,0,0.32); color: var(--text-main); animation: modalEnter 0.3s cubic-bezier(0.22, 1, 0.36, 1) both; }
         @keyframes backdropIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes modalEnter { from { opacity: 0; transform: translateY(12px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
-        .customer-display { position: fixed; inset: 0; z-index: 11000; display: none; flex-direction: column; overflow-y: auto; color: #f7f1e4; background: #080808; }
+        .customer-display { position: fixed; inset: 0; z-index: 11000; display: none; flex-direction: column; overflow-y: auto; color: #f7f1e4; background: radial-gradient(circle at top right, rgba(214, 175, 55, 0.12), transparent 28%), #080808; }
         .customer-display-header { display: flex; justify-content: space-between; align-items: center; padding: 18px 24px; border-bottom: 1px solid rgba(214, 175, 55, 0.2); }
         .customer-display-header > div { display: flex; align-items: center; gap: 10px; }
         .customer-display-brand { color: #d6af37; font-weight: 900; font-size: 19px; letter-spacing: 2px; }
-        .customer-display-content { width: min(760px, 100%); height: auto; min-height: 0; margin: auto; padding: 32px 24px; display: flex; flex-direction: column; justify-content: center; background: transparent; }
+        .customer-display-content { width: min(1180px, 100%); height: auto; min-height: 0; margin: auto; padding: 28px 24px; display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(280px, 0.75fr); gap: 22px; background: transparent; }
+        .customer-display-main, .customer-display-side { min-width: 0; }
+        .customer-display-main { display: flex; flex-direction: column; }
+        .customer-display-side { display: flex; flex-direction: column; gap: 12px; }
         .customer-display-eyebrow { color: #d6af37; font-size: 11px; font-weight: 800; letter-spacing: 2px; }
         .customer-display-content h1 { margin-top: 8px; font-size: clamp(26px, 5vw, 42px); }
         .customer-display-status { margin-top: 8px; color: #c9c0ad; font-size: 15px; }
-        .customer-display-items { display: flex; flex-direction: column; gap: 10px; margin: 24px 0; }
-        .customer-display-item { display: flex; justify-content: space-between; gap: 16px; padding: 12px 14px; border: 1px solid rgba(214, 175, 55, 0.16); border-radius: 12px; background: rgba(255, 255, 255, 0.035); }
+        .customer-display-paid-confirmation { display: none; align-items: center; gap: 12px; margin-top: 14px; padding: 14px 16px; border: 1px solid rgba(154, 181, 157, 0.55); border-radius: 14px; background: rgba(154, 181, 157, 0.12); color: #b9ceb8; }
+        .customer-display-paid-confirmation.visible { display: flex; }
+        .customer-display-paid-icon { width: 42px; height: 42px; flex-shrink: 0; display: grid; place-items: center; border-radius: 50%; background: #9ab59d; color: #0a160c; font-size: 23px; font-weight: 900; }
+        .customer-display-paid-confirmation strong { display: block; color: #dff0de; font-size: 16px; }
+        .customer-display-paid-confirmation span { display: block; margin-top: 3px; color: #b9ceb8; font-size: 12px; }
+        .customer-display-items { display: flex; flex-direction: column; gap: 9px; margin: 18px 0; max-height: 46vh; overflow-y: auto; }
+        .customer-display-item { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center; padding: 13px 15px; border: 1px solid rgba(214, 175, 55, 0.16); border-radius: 12px; background: rgba(255, 255, 255, 0.035); }
+        .customer-display-item-name { display: flex; flex-direction: column; gap: 3px; }
+        .customer-display-item-name small { color: #aaa397; font-size: 11px; }
         .customer-display-total { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 18px 0; border-top: 1px solid rgba(214, 175, 55, 0.3); color: #d6af37; }
         .customer-display-total strong { font-size: clamp(24px, 5vw, 38px); }
         .customer-display-footer { margin-top: 24px; color: #aaa397; text-align: center; font-size: 12px; }
+        .customer-display-card { border: 1px solid rgba(214, 175, 55, 0.18); border-radius: 16px; background: rgba(255, 255, 255, 0.04); padding: 16px; }
+        .customer-display-card-label { color: #aaa397; font-size: 10px; font-weight: 800; letter-spacing: 1.4px; text-transform: uppercase; }
+        .customer-display-member-name { color: #f7f1e4; font-size: 16px; font-weight: 800; margin-top: 6px; }
+        .customer-display-points { color: #d6af37; font-size: 28px; font-weight: 900; margin-top: 4px; }
+        .customer-display-promo { color: #9ab59d; font-size: 13px; font-weight: 800; margin-top: 7px; }
+        .customer-display-payment { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+        .customer-display-payment-value { color: #f7f1e4; font-size: 18px; font-weight: 900; margin-top: 5px; }
+        .customer-display-change { color: #9ab59d; }
+        .assa-insight-card { border: 1px solid rgba(215, 189, 130, 0.38); background: linear-gradient(135deg, rgba(215, 189, 130, 0.12), var(--bg-card)); border-radius: 14px; padding: 16px; box-shadow: var(--shadow-card); }
+        .assa-insight-head { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:12px; }
+        .assa-insight-brand { color:var(--accent); font-size:11px; font-weight:900; letter-spacing:1.8px; text-transform:uppercase; }
+        .assa-insight-headline { font-size:16px; font-weight:900; color:var(--text-main); margin-top:4px; }
+        .assa-insight-list { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:8px; }
+        .assa-insight-point { display:flex; gap:8px; align-items:flex-start; padding:9px 10px; border-radius:9px; background:rgba(255,255,255,0.035); color:var(--text-muted); font-size:11px; }
+        .assa-insight-point strong { color:var(--text-main); }
+        .assa-insight-recommendation { margin-top:10px; padding:10px 12px; border-left:3px solid var(--accent); background:var(--bg-card); border-radius:8px; color:var(--text-main); font-size:12px; font-weight:700; }
+        .customer-display-qris { align-items: center; text-align: center; }
+        .customer-display-qris img { width: 175px; height: 175px; display: block; margin: 10px auto 6px; border-radius: 10px; background: #fff; padding: 8px; }
+        .customer-display-qris-value { color: #d6af37; font-size: 20px; font-weight: 900; }
+        body.customer-display-window .app-container { display: none; }
+        body.customer-display-window .customer-display { display: flex; }
+        body.customer-display-window .customer-display-header .btn { display: none; }
         .receipt-preview-content { background: #fff; color: #000; font-family: monospace; font-size: 12px; padding: 16px; border: 1px dashed #cbd5e1; border-radius: 8px; margin: 12px 0; max-height: 340px; overflow-y: auto; text-align: left; line-height: 1.45; }
 
         /* TOAST NOTIFICATION */
@@ -356,7 +388,9 @@
             .member-form-grid, .waitlist-form-grid { grid-template-columns: minmax(0, 1fr); }
             .toast-container { left: 10px; right: 10px; bottom: calc(66px + env(safe-area-inset-bottom)); }
             .customer-display-header { padding: 12px 14px; }
-            .customer-display-content { padding: 24px 16px; }
+            .customer-display-content { grid-template-columns: 1fr; padding: 24px 16px; }
+            .customer-display-side { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .customer-display-qris { grid-column: 1 / -1; }
             .customer-display-item { padding: 10px; }
         }
 
@@ -653,7 +687,7 @@
                     <div class="brand-logo">AS</div>
                     <div class="brand-text">
                         <h1>ASSA RESTAURANT</h1>
-                        <p>v18 | PRO</p>
+                        <p>v20 | PRO Plus</p>
                     </div>
                 </div>
 
@@ -699,7 +733,7 @@
                                 <option value="">-- Umum / Tanpa Member --</option>
                             </select>
                             <button class="btn btn-purple" style="font-size:11px; white-space:nowrap;" onclick="openHoldBillsModal()">Open Bills (<span id="holdCountBtn">0</span>)</button>
-                            <button class="btn" style="font-size:11px; white-space:nowrap;" onclick="toggleCustomerDisplay()">Layar Pelanggan</button>
+                            <button class="btn" style="font-size:11px; white-space:nowrap;" onclick="openCustomerDisplay()">Layar Pelanggan</button>
                             <button class="btn btn-primary" style="font-size:11px; white-space:nowrap;" onclick="switchTab('reservasi', document.querySelector('.nav-item[data-tab=reservasi]'))">Booking VIP</button>
                         </div>
                         <div id="memberPreferenceNotice" class="member-preference-notice"></div>
@@ -757,7 +791,7 @@
                                     <span id="activeBillBadge" style="background:var(--accent-soft); color:var(--accent); padding:2px 7px; border-radius:5px; font-size:9px;">NEW ORDER</span>
                                     <label class="order-number-control" for="currentOrderNumberInput">
                                         No. Pesanan
-                                        <input type="number" id="currentOrderNumberInput" min="1" step="1" value="1" title="Nomor ini otomatis bertambah setelah pembayaran" onchange="setNextOrderNumber(this.value)">
+                                        <input type="text" id="currentOrderNumberInput" value="AR-001" title="Nomor ini otomatis bertambah setelah pembayaran" onchange="setNextOrderNumber(this.value)">
                                     </label>
                                     <span>SISA TAGIHAN</span>
                                 </div>
@@ -926,6 +960,17 @@
                         <div class="metric-card"><span>Estimasi Profit</span><h2 id="dashboardProfit" style="color:var(--success);">Rp 0</h2></div>
                         <div class="metric-card"><span>Pesanan Aktif</span><h2 id="dashboardOpenOrders">0</h2></div>
                     </div>
+                    <section class="assa-insight-card">
+                        <div class="assa-insight-head">
+                            <div>
+                                <div class="assa-insight-brand">ASSA Insight • AI Business Advisor</div>
+                                <div id="assaInsightHeadline" class="assa-insight-headline">Menganalisis performa bisnis...</div>
+                            </div>
+                            <button class="btn" onclick="openAssaInsightModal()">Lihat Lengkap</button>
+                        </div>
+                        <div id="assaInsightList" class="assa-insight-list"></div>
+                        <div id="assaInsightRecommendation" class="assa-insight-recommendation">Mengumpulkan rekomendasi operasional.</div>
+                    </section>
                     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:12px;">
                         <div class="content-card" style="min-height:220px;">
                             <h3 style="font-size:13px; margin-bottom:10px;">Menu Terlaris Hari Ini</h3>
@@ -1471,6 +1516,21 @@
     </div>
 
     <!-- MODAL: DAFTAR OPEN BILLS (HOLD ORDERS) -->
+    <div id="assaInsightModal" class="modal-overlay">
+        <div class="modal-box" style="width: 520px;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:12px;">
+                <div>
+                    <div class="assa-insight-brand">ASSA Insight</div>
+                    <h3 style="margin-top:4px;">AI Business Advisor</h3>
+                </div>
+                <button class="btn-danger-icon" onclick="closeAssaInsightModal()">×</button>
+            </div>
+            <div id="assaInsightModalHeadline" class="assa-insight-headline" style="margin-bottom:12px;"></div>
+            <div id="assaInsightModalList" class="assa-insight-list"></div>
+            <div id="assaInsightModalRecommendation" class="assa-insight-recommendation"></div>
+        </div>
+    </div>
+
     <div id="holdBillsModal" class="modal-overlay">
         <div class="modal-box" style="width: 520px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
@@ -1532,12 +1592,48 @@
             <button class="btn" onclick="toggleCustomerDisplay()">Tutup Layar</button>
         </header>
         <main class="customer-display-content">
-            <p id="customerDisplayTable" class="customer-display-eyebrow">PESANAN ANDA</p>
-            <h1 id="customerDisplayOrderTitle">Selamat Datang</h1>
-            <p id="customerDisplayStatus" class="customer-display-status">Silakan pilih menu favorit Anda.</p>
-            <div id="customerDisplayItems" class="customer-display-items"></div>
-            <div class="customer-display-total"><span>Total Tagihan</span><strong id="customerDisplayTotal">Rp 0</strong></div>
-            <p class="customer-display-footer">Terima kasih telah berkunjung</p>
+            <section class="customer-display-main">
+                <p id="customerDisplayTable" class="customer-display-eyebrow">PESANAN ANDA</p>
+                <h1 id="customerDisplayOrderTitle">Selamat Datang</h1>
+                <p id="customerDisplayStatus" class="customer-display-status">Silakan pilih menu favorit Anda.</p>
+                <div id="customerDisplayPaidConfirmation" class="customer-display-paid-confirmation" role="status" aria-live="polite">
+                    <div class="customer-display-paid-icon">✓</div>
+                    <div>
+                        <strong>TRANSAKSI BERHASIL</strong>
+                        <span id="customerDisplayPaidDetail">Pembayaran telah diterima. Terima kasih.</span>
+                    </div>
+                </div>
+                <div id="customerDisplayItems" class="customer-display-items"></div>
+                <div class="customer-display-total"><span>Total Bayar</span><strong id="customerDisplayTotal">Rp 0</strong></div>
+                <p class="customer-display-footer">Terima kasih telah berkunjung</p>
+            </section>
+            <aside class="customer-display-side">
+                <section class="customer-display-card">
+                    <div class="customer-display-card-label">Poin Member</div>
+                    <div id="customerDisplayMemberName" class="customer-display-member-name">Belum ada member</div>
+                    <div id="customerDisplayPoints" class="customer-display-points">0 Poin</div>
+                    <div id="customerDisplayMemberTier" class="customer-display-status"></div>
+                </section>
+                <section class="customer-display-card">
+                    <div class="customer-display-card-label">Promo Berjalan</div>
+                    <div id="customerDisplayPromo" class="customer-display-promo">Belum ada promo aktif</div>
+                </section>
+                <section class="customer-display-card customer-display-payment">
+                    <div>
+                        <div class="customer-display-card-label">Uang Diterima</div>
+                        <div id="customerDisplayCashReceived" class="customer-display-payment-value">Rp 0</div>
+                    </div>
+                    <div>
+                        <div class="customer-display-card-label">Kembalian</div>
+                        <div id="customerDisplayChange" class="customer-display-payment-value customer-display-change">Rp 0</div>
+                    </div>
+                </section>
+                <section class="customer-display-card customer-display-qris">
+                    <div class="customer-display-card-label">Pembayaran QRIS</div>
+                    <img id="customerDisplayQris" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=ASSA%20RESTAURANT%20QRIS" alt="QRIS ASSA Restaurant">
+                    <div id="customerDisplayQrisNominal" class="customer-display-qris-value">Rp 0</div>
+                </section>
+            </aside>
         </main>
     </div>
 
@@ -1750,9 +1846,21 @@
         let members = loadStoredJSON('assa_pos_luxe_members_v96', initialMembers);
         let transactions = loadStoredJSON('assa_pos_luxe_trx_v96', []);
         const orderNumberStorageKey = 'assa_pos_luxe_next_order_number_v1';
+        function parseOrderNumber(value) {
+            if (typeof value === 'string') {
+                const match = value.trim().toUpperCase().match(/^AR-(\d+)$/);
+                if (match) return Number(match[1]);
+            }
+            const number = Number(value);
+            return Number.isSafeInteger(number) && number > 0 ? number : 0;
+        }
+        function formatOrderNumber(value) {
+            const number = parseOrderNumber(value);
+            return number > 0 ? `AR-${String(number).padStart(3, '0')}` : '';
+        }
         function getHighestOrderNumber(records) {
             return (Array.isArray(records) ? records : []).reduce((highest, record) => {
-                const value = Number(record && record.orderNumber);
+                const value = parseOrderNumber(record && record.orderNumber);
                 return Number.isSafeInteger(value) && value > highest ? value : highest;
             }, 0);
         }
@@ -1761,7 +1869,7 @@
         }
         function getNextAvailableOrderNumber(value, records = transactions) {
             const minimum = getHighestOrderNumber(records) + 1;
-            const requested = Number(value);
+            const requested = parseOrderNumber(value);
             return Number.isSafeInteger(requested) && requested >= minimum && requested > 0 ? requested : minimum;
         }
         const minimumUnusedOrderNumber = getHighestOrderNumber(transactions) + 1;
@@ -1834,6 +1942,7 @@
         let isPosCatalogSidebarCollapsed = false;
         
         let cart = [];
+        let paidConfirmationUntil = 0;
         let activeHoldTable = null;
         let activeReservationId = null; // Menyimpan ID reservasi yang sedang check-in
         let salesChartInstance = null;
@@ -1966,20 +2075,22 @@
 
         function getOrderNumberLabel(record) {
             if (!record) return '';
-            const number = Number(record.orderNumber);
-            return Number.isSafeInteger(number) && number > 0 ? String(number) : String(record.id || '');
+            const number = parseOrderNumber(record.orderNumber);
+            if (number > 0) return formatOrderNumber(number);
+            const fallback = String(record.id || '');
+            return /^AR-\d+$/i.test(fallback) ? fallback.toUpperCase() : fallback;
         }
 
         function renderCurrentOrderNumber() {
             const input = document.getElementById('currentOrderNumberInput');
-            if (input) input.value = String(nextOrderNumber);
+            if (input) input.value = formatOrderNumber(nextOrderNumber);
         }
 
         function setNextOrderNumber(value) {
-            const requested = Number(value);
+            const requested = parseOrderNumber(value);
             const minimum = getHighestOrderNumber(transactions) + 1;
             if (!Number.isSafeInteger(requested) || requested < minimum || requested >= Number.MAX_SAFE_INTEGER) {
-                showToast(`Nomor pesanan harus bilangan bulat minimal ${minimum}.`);
+                showToast(`Nomor pesanan harus memakai format AR-001 atau minimal ${formatOrderNumber(minimum)}.`);
                 renderCurrentOrderNumber();
                 return false;
             }
@@ -1995,6 +2106,7 @@
             updateThemeButtonText();
             document.getElementById('activeOperator').innerText = activeOperator;
             renderCurrentOrderNumber();
+            setupCustomerDisplayChannel();
             
             // Populate dropdown meja reservasi & default tanggal hari ini
             document.getElementById('resDate').value = todayISO;
@@ -2027,6 +2139,7 @@
             renderCashMovements();
             renderVoidAudit();
             renderCustomerDisplay();
+            window.setTimeout(maybeShowMorningAssaInsight, 500);
 
             document.getElementById('barcodeInput').addEventListener('keypress', (e) => {
                 if (e.key === 'Enter') addFromInput();
@@ -2077,6 +2190,146 @@
             kitchenBadge.innerText = activeKitchenCount;
             kitchenBadge.style.display = activeKitchenCount > 0 ? 'inline-block' : 'none';
 
+        }
+
+        function getAssaInsightTransactionDate(transaction) {
+            if (transaction.timestamp && Number.isFinite(Date.parse(transaction.timestamp))) {
+                return toLocalDateISO(new Date(transaction.timestamp));
+            }
+            if (transaction.date) {
+                const parts = String(transaction.date).split('/');
+                if (parts.length === 3) {
+                    const day = Number(parts[0]);
+                    const month = Number(parts[1]);
+                    const year = Number(parts[2]);
+                    if (Number.isFinite(day) && Number.isFinite(month) && Number.isFinite(year)) {
+                        return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                    }
+                }
+            }
+            return '';
+        }
+
+        function generateAssaBusinessInsight(today) {
+            const currentStart = new Date(`${today}T00:00:00`);
+            currentStart.setDate(currentStart.getDate() - 6);
+            const previousStart = new Date(currentStart);
+            previousStart.setDate(previousStart.getDate() - 7);
+            const currentStartISO = toLocalDateISO(currentStart);
+            const previousStartISO = toLocalDateISO(previousStart);
+            const previousEnd = new Date(currentStart);
+            previousEnd.setDate(previousEnd.getDate() - 1);
+            const previousEndISO = toLocalDateISO(previousEnd);
+
+            let currentSales = 0;
+            let previousSales = 0;
+            const currentCategory = {};
+            const previousCategory = {};
+            const todayItemSales = {};
+
+            transactions.forEach(transaction => {
+                const date = getAssaInsightTransactionDate(transaction);
+                const total = Number(transaction.netPaidAtCheckout ?? transaction.total) || 0;
+                if (date >= currentStartISO && date <= today) currentSales += total;
+                if (date >= previousStartISO && date <= previousEndISO) previousSales += total;
+
+                (transaction.items || []).forEach(item => {
+                    const categoryRaw = item.kategori || 'Makanan';
+                    const category = categoryRaw === 'Eropa Mewah' ? 'Luxe Food' : categoryRaw;
+                    const revenue = Number(item.subtotal) || 0;
+                    if (date >= currentStartISO && date <= today) currentCategory[category] = (currentCategory[category] || 0) + revenue;
+                    if (date >= previousStartISO && date <= previousEndISO) previousCategory[category] = (previousCategory[category] || 0) + revenue;
+                    if (date === today) todayItemSales[item.nama] = (todayItemSales[item.nama] || 0) + (Number(item.qty) || 0);
+                });
+            });
+
+            const salesChange = previousSales > 0 ? Math.round(((currentSales - previousSales) / previousSales) * 100) : 0;
+            let categoryTrend = null;
+            ['Minuman', 'Dessert', 'Makanan', 'Luxe Food'].forEach(category => {
+                const previous = previousCategory[category] || 0;
+                const current = currentCategory[category] || 0;
+                if (previous <= 0) return;
+                const change = Math.round(((current - previous) / previous) * 100);
+                if (!categoryTrend || change > categoryTrend.change) categoryTrend = { category, change };
+            });
+
+            const points = [];
+            if (previousSales > 0) {
+                points.push(`<div class="assa-insight-point"><span>•</span><span><strong>Omzet ${salesChange >= 0 ? 'naik' : 'turun'} ${Math.abs(salesChange)}%</strong> dibanding periode 7 hari sebelumnya.</span></div>`);
+            } else {
+                points.push(`<div class="assa-insight-point"><span>•</span><span><strong>Omzet 7 hari:</strong> ${formatIDR(currentSales)}.</span></div>`);
+            }
+
+            if (categoryTrend) {
+                points.push(`<div class="assa-insight-point"><span>•</span><span><strong>${escapeHTML(categoryTrend.category)} ${categoryTrend.change >= 0 ? 'meningkat' : 'menurun'} ${Math.abs(categoryTrend.change)}%</strong> dibanding minggu sebelumnya.</span></div>`);
+            }
+
+            let stockWarning = '';
+            const now = new Date();
+            const elapsedHours = Math.max(1, now.getHours() - 8);
+            const closingHour = 20;
+            catalog
+                .map(product => ({ product, available: getMenuAvailableStock(product) }))
+                .filter(entry => entry.available <= 10)
+                .sort((a, b) => a.available - b.available)
+                .slice(0, 3)
+                .forEach(({ product, available }) => {
+                    const soldToday = todayItemSales[product.nama] || 0;
+                    if (!soldToday) return;
+                    const hourlyUsage = soldToday / elapsedHours;
+                    const remainingHours = hourlyUsage > 0 ? available / hourlyUsage : closingHour - now.getHours();
+                    const predictedHour = Math.min(closingHour, now.getHours() + remainingHours);
+                    const hour = Math.floor(predictedHour);
+                    const minute = Math.round((predictedHour - hour) * 60);
+                    if (remainingHours <= closingHour - now.getHours()) {
+                        stockWarning += `${escapeHTML(product.nama)} diperkirakan habis sekitar pukul ${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}. `;
+                    }
+                });
+            if (stockWarning) {
+                points.push(`<div class="assa-insight-point"><span>•</span><span><strong>Peringatan stok:</strong> ${stockWarning}</span></div>`);
+            } else {
+                const lowCount = catalog.filter(product => getMenuAvailableStock(product) <= 5).length;
+                points.push(`<div class="assa-insight-point"><span>•</span><span><strong>${lowCount ? `${lowCount} menu perlu diperhatikan` : 'Stok operasional aman'}</strong> untuk periode sisa hari ini.</span></div>`);
+            }
+
+            let recommendation = 'Pertahankan performa saat ini dan pantau menu terlaris selama jam operasional.';
+            if (categoryTrend && categoryTrend.category === 'Minuman' && categoryTrend.change > 0) {
+                recommendation = 'Pertahankan potongan atau paket minuman; siapkan stok tambahan agar momentum penjualan tidak terputus.';
+            } else if (categoryTrend && categoryTrend.category === 'Dessert' && categoryTrend.change < 0) {
+                recommendation = 'Disarankan: aktifkan promo dessert hari ini atau tawarkan pairing dengan menu utama.';
+            } else if (stockWarning) {
+                recommendation = 'Disarankan: batasi penjualan menu mendekati habis atau siapkan stok pengganti sebelum jam habis diperkirakan.';
+            } else if (salesChange < 0) {
+                recommendation = 'Disarankan: jalankan promo dessert atau paket bundling untuk mendorong omzet hari ini.';
+            }
+
+            const headline = previousSales > 0
+                ? `Omzet ${salesChange >= 0 ? 'naik' : 'turun'} ${Math.abs(salesChange)}% dibanding minggu lalu`
+                : `Omzet 7 hari terakhir mencapai ${formatIDR(currentSales)}`;
+            return { headline, points, recommendation };
+        }
+
+        let assaCurrentInsight = null;
+
+        function openAssaInsightModal() {
+            if (!assaCurrentInsight) assaCurrentInsight = generateAssaBusinessInsight(toLocalDateISO());
+            document.getElementById('assaInsightModalHeadline').innerText = assaCurrentInsight.headline;
+            document.getElementById('assaInsightModalList').innerHTML = assaCurrentInsight.points.join('');
+            document.getElementById('assaInsightModalRecommendation').innerText = assaCurrentInsight.recommendation;
+            document.getElementById('assaInsightModal').style.display = 'flex';
+        }
+
+        function closeAssaInsightModal() {
+            document.getElementById('assaInsightModal').style.display = 'none';
+        }
+
+        function maybeShowMorningAssaInsight() {
+            const hour = new Date().getHours();
+            if (hour < 5 || hour >= 12) return;
+            const key = `assa_pos_luxe_insight_morning_${toLocalDateISO()}`;
+            if (localStorage.getItem(key)) return;
+            localStorage.setItem(key, 'shown');
+            openAssaInsightModal();
         }
 
         function renderDashboard() {
@@ -2131,6 +2384,11 @@
             document.getElementById('dashboardAlerts').innerHTML = alerts.length
                 ? alerts.map(message => `<div style="padding:8px 10px; border-radius:8px; background:var(--bg-card); color:var(--warning); font-size:11px;">${escapeHTML(message)}</div>`).join('')
                 : `<span style="font-size:11px; color:var(--success);">Semua berjalan lancar.</span>`;
+
+            assaCurrentInsight = generateAssaBusinessInsight(today);
+            document.getElementById('assaInsightHeadline').innerText = assaCurrentInsight.headline;
+            document.getElementById('assaInsightList').innerHTML = assaCurrentInsight.points.join('');
+            document.getElementById('assaInsightRecommendation').innerText = `Disarankan: ${assaCurrentInsight.recommendation.replace(/^Disarankan:\s*/i, '')}`;
         }
 
         function toggleSidebar() {
@@ -2579,6 +2837,7 @@
             cart = [];
             activeHoldTable = null;
             activeReservationId = null;
+            paidConfirmationUntil = Date.now() + 10000;
             document.getElementById('activeBillBadge').innerText = 'NEW ORDER';
             saveData();
             updateCartTable();
@@ -3093,25 +3352,170 @@
             if (!isVisible) renderCustomerDisplay();
         }
 
+        let customerDisplayChannel = null;
+        let customerDisplayWindow = null;
+
+        function openCustomerDisplay() {
+            const url = new URL(window.location.href);
+            url.searchParams.set('customerDisplay', '1');
+            customerDisplayWindow = window.open(url.toString(), 'assaCustomerDisplay', 'popup=yes');
+            if (!customerDisplayWindow) toggleCustomerDisplay();
+            else {
+                renderCustomerDisplay();
+                showToast('Layar pelanggan dibuka di jendela kedua.');
+            }
+        }
+
+        function setupCustomerDisplayChannel() {
+            if (!('BroadcastChannel' in window)) return;
+            customerDisplayChannel = new BroadcastChannel('assa-customer-display');
+            if (new URLSearchParams(window.location.search).get('customerDisplay') === '1') {
+                customerDisplayChannel.onmessage = event => applyCustomerDisplayPayload(event.data);
+                document.body.classList.add('customer-display-window');
+            }
+        }
+
+        function applyCustomerDisplayPayload(payload) {
+            if (!payload) return;
+            const setText = (id, value) => {
+                const element = document.getElementById(id);
+                if (element) element.innerText = value;
+            };
+            setText('customerDisplayTable', payload.table);
+            setText('customerDisplayOrderTitle', payload.title);
+            setText('customerDisplayStatus', payload.status);
+            setText('customerDisplayTotal', payload.total);
+            setText('customerDisplayMemberName', payload.memberName);
+            setText('customerDisplayPoints', payload.points);
+            setText('customerDisplayMemberTier', payload.memberTier);
+            setText('customerDisplayPromo', payload.promo);
+            setText('customerDisplayCashReceived', payload.cashReceived);
+            setText('customerDisplayChange', payload.change);
+            setText('customerDisplayQrisNominal', payload.qrisNominal);
+            setText('customerDisplayPaidDetail', payload.paidDetail);
+            const paidConfirmation = document.getElementById('customerDisplayPaidConfirmation');
+            if (paidConfirmation) paidConfirmation.classList.toggle('visible', Boolean(payload.paidConfirmation));
+            const items = document.getElementById('customerDisplayItems');
+            if (items) items.innerHTML = payload.items;
+            const qris = document.getElementById('customerDisplayQris');
+            if (qris && payload.qris) qris.src = payload.qris;
+        }
+
         function renderCustomerDisplay() {
             const panel = document.getElementById('customerDisplayPanel');
             if (!panel) return;
             const hasCart = cart.length > 0;
             const items = hasCart ? cart : (lastTrx ? lastTrx.items || [] : []);
-            const total = hasCart
-                ? getCalculatedBilling().final
+            const billing = hasCart ? getCalculatedBilling() : null;
+            const total = billing
+                ? billing.final
                 : (lastTrx ? Number(lastTrx.netPaidAtCheckout ?? lastTrx.total) || 0 : 0);
             const selectedTable = hasCart ? document.getElementById('tableNumber').value : (lastTrx ? lastTrx.table : '');
 
-            document.getElementById('customerDisplayTable').innerText = selectedTable ? `MEJA ${selectedTable}` : 'PESANAN ANDA';
-            document.getElementById('customerDisplayOrderTitle').innerText = hasCart
-                ? `Pesanan #${nextOrderNumber}`
-                : (lastTrx ? `No. Pesanan ${getOrderNumberLabel(lastTrx)}` : `No. Pesanan ${nextOrderNumber}`);
-            document.getElementById('customerDisplayStatus').innerText = getCustomerOrderStatus(hasCart);
-            document.getElementById('customerDisplayTotal').innerText = formatIDR(total);
-            document.getElementById('customerDisplayItems').innerHTML = items.length
-                ? items.map(item => `<div class="customer-display-item"><span>${Number(item.qty) || 1} × ${escapeHTML(item.nama)}</span><strong>${formatIDR(Number(item.subtotal) || 0)}</strong></div>`).join('')
+            const tableText = selectedTable ? `MEJA ${selectedTable}` : 'PESANAN ANDA';
+            const titleText = hasCart
+                ? `Pesanan ${formatOrderNumber(nextOrderNumber)}`
+                : (lastTrx ? `No. Pesanan ${getOrderNumberLabel(lastTrx)}` : `No. Pesanan ${formatOrderNumber(nextOrderNumber)}`);
+            const paidConfirmation = !hasCart && Boolean(lastTrx) && Date.now() < paidConfirmationUntil;
+            const statusText = paidConfirmation
+                ? 'Pembayaran lunas dan transaksi telah dikonfirmasi.'
+                : getCustomerOrderStatus(hasCart);
+            const paidDetail = paidConfirmation
+                ? `Pembayaran ${lastTrx.method || 'transaksi'} sebesar ${formatIDR(total)} telah diterima.`
+                : 'Pembayaran telah diterima. Terima kasih.';
+            let memberName = 'Belum ada member';
+            let memberPoints = '0 Poin';
+            let memberTier = 'Umum';
+            if (hasCart) {
+                const memberId = document.getElementById('selectedMember').value;
+                const member = members.find(entry => entry.id === memberId);
+                if (member) {
+                    const tier = getMemberTier(member.poin);
+                    memberName = member.nama;
+                    memberPoints = `${member.poin} Poin`;
+                    memberTier = `${tier.name} • Diskon ${tier.discRate * 100}%`;
+                }
+            } else if (lastTrx) {
+                memberName = lastTrx.member && lastTrx.member !== 'Umum' ? lastTrx.member : 'Belum ada member';
+                memberPoints = Number(lastTrx.pointsUsed) > 0 ? `${lastTrx.pointsUsed} poin ditukar` : '0 Poin';
+                memberTier = lastTrx.memberTier || 'Umum';
+            }
+            const promoText = billing
+                ? (billing.promoName ? `${billing.promoName} • Hemat ${formatIDR(billing.promoDisc)}` : 'Belum ada promo aktif')
+                : 'Belum ada promo aktif';
+            const paymentMethod = hasCart
+                ? (document.getElementById('paymentMethod')?.value || '')
+                : (lastTrx?.method || document.getElementById('paymentMethod')?.value || '');
+            const showQris = paymentMethod === 'QRIS' || paymentMethod === 'SPLIT';
+            let cashReceived = 0;
+            let change = 0;
+            if (hasCart) {
+                if (paymentMethod === 'CASH') {
+                    cashReceived = parseFloat(document.getElementById('cashAmount')?.value) || 0;
+                    change = Math.max(0, cashReceived - total);
+                } else if (paymentMethod === 'SPLIT') {
+                    cashReceived = parseFloat(document.getElementById('splitCashAmount')?.value) || 0;
+                    change = 0;
+                }
+            } else if (lastTrx) {
+                cashReceived = Number(lastTrx.cashReceived) || 0;
+                change = Number(lastTrx.change) || 0;
+            }
+            const cashReceivedText = paymentMethod === 'QRIS' || paymentMethod === 'CARD'
+                ? 'Rp 0'
+                : formatIDR(cashReceived);
+            const changeText = paymentMethod === 'SPLIT'
+                ? 'Split'
+                : (paymentMethod === 'QRIS' || paymentMethod === 'CARD')
+                    ? 'Rp 0'
+                    : (cashReceived > 0 && cashReceived < total)
+                        ? `Kurang ${formatIDR(total - cashReceived)}`
+                        : formatIDR(change);
+            const qrisText = showQris ? `ASSA-LUXE-QRIS-${total}-${Date.now()}` : 'ASSA RESTAURANT QRIS';
+            const qrisUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(qrisText)}`;
+            const itemsHtml = items.length
+                ? items.map(item => {
+                    const qty = Number(item.qty) || 1;
+                    const subtotal = Number(item.subtotal) || 0;
+                    return `<div class="customer-display-item"><div class="customer-display-item-name"><strong>${qty} × ${escapeHTML(item.nama)}</strong><small>Menu pesanan</small></div><strong>${formatIDR(subtotal)}</strong></div>`;
+                }).join('')
                 : `<div class="customer-display-item"><span>Belum ada menu dipilih</span></div>`;
+
+            document.getElementById('customerDisplayTable').innerText = tableText;
+            document.getElementById('customerDisplayOrderTitle').innerText = titleText;
+            document.getElementById('customerDisplayStatus').innerText = statusText;
+            document.getElementById('customerDisplayPaidDetail').innerText = paidDetail;
+            document.getElementById('customerDisplayPaidConfirmation').classList.toggle('visible', paidConfirmation);
+            document.getElementById('customerDisplayTotal').innerText = formatIDR(total);
+            document.getElementById('customerDisplayItems').innerHTML = itemsHtml;
+            document.getElementById('customerDisplayMemberName').innerText = memberName;
+            document.getElementById('customerDisplayPoints').innerText = memberPoints;
+            document.getElementById('customerDisplayMemberTier').innerText = memberTier;
+            document.getElementById('customerDisplayPromo').innerText = promoText;
+            document.getElementById('customerDisplayCashReceived').innerText = cashReceivedText;
+            document.getElementById('customerDisplayChange').innerText = changeText;
+            document.getElementById('customerDisplayQrisNominal').innerText = showQris ? formatIDR(total) : 'Pindai untuk bayar';
+            document.getElementById('customerDisplayQris').src = qrisUrl;
+
+            if (customerDisplayChannel) {
+                customerDisplayChannel.postMessage({
+                    table: tableText,
+                    title: titleText,
+                    status: statusText,
+                    total: formatIDR(total),
+                    memberName,
+                    points: memberPoints,
+                    memberTier,
+                    promo: promoText,
+                    cashReceived: cashReceivedText,
+                    change: changeText,
+                    qris: qrisUrl,
+                    qrisNominal: showQris ? formatIDR(total) : 'Pindai untuk bayar',
+                    paidConfirmation,
+                    paidDetail,
+                    items: itemsHtml
+                });
+            }
         }
 
         function getCustomerOrderStatus(hasCart) {
@@ -3144,6 +3548,7 @@
             document.getElementById('splitInputGroup').style.display = m === 'SPLIT' ? 'block' : 'none';
             if (m === 'SPLIT') calculateSplit();
             calculateChange();
+            renderCustomerDisplay();
         }
 
         function calculateSplit() {
@@ -3151,6 +3556,7 @@
             const splitCash = parseFloat(document.getElementById('splitCashAmount').value) || 0;
             const remain = Math.max(0, b.final - splitCash);
             document.getElementById('splitNonCashDisplay').innerText = formatIDR(remain);
+            renderCustomerDisplay();
         }
 
         function calculateChange() {
@@ -3160,10 +3566,11 @@
 
             if (m !== 'CASH') {
                 document.getElementById('displayChange').innerText = m === 'SPLIT' ? 'Split Lunas' : 'Rp 0 (Non-Tunai)';
-                return;
+            } else {
+                const change = cash - b.final;
+                document.getElementById('displayChange').innerText = change >= 0 ? formatIDR(change) : 'Kurang ' + formatIDR(Math.abs(change));
             }
-            const change = cash - b.final;
-            document.getElementById('displayChange').innerText = change >= 0 ? formatIDR(change) : 'Kurang ' + formatIDR(Math.abs(change));
+            renderCustomerDisplay();
         }
 
         function processCheckout() {
@@ -3322,7 +3729,7 @@
             if (tableNum !== 'Takeaway') manualTableStatus[tableNum] = true;
             saveData();
 
-            showToast(`Pesanan #${record.orderNumber} Lunas!`);
+            showToast(`Pesanan ${formatOrderNumber(record.orderNumber)} Lunas!`);
             document.getElementById('btnPrintReceipt').disabled = false;
             document.getElementById('btnPrintKitchen').disabled = false;
 
@@ -3343,6 +3750,8 @@
             renderTableMonitoring();
             renderAnalytics();
             renderKitchenDisplay();
+            renderCustomerDisplay();
+            window.setTimeout(renderCustomerDisplay, 10050);
             checkoutInProgress = false;
         }
 
