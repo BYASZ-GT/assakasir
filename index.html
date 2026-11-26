@@ -65,6 +65,7 @@
         aside.collapsed .nav-item span:not(:first-child),
         aside.collapsed .operator-panel .op-info,
         aside.collapsed #themeToggleBtn,
+        aside.collapsed .sidebar-watermark,
         aside.collapsed #shiftCloseBtn { display: none !important; }
         aside.collapsed .brand { padding: 24px 16px; justify-content: center; }
         aside.collapsed .nav-item { justify-content: center; padding: 12px; }
@@ -107,6 +108,7 @@
             display: flex; align-items: center; justify-content: center; gap: 6px; transition: 0.2s;
         }
         .sidebar-toggle-btn:hover { background: var(--bg-hover); border-color: var(--accent); }
+        .sidebar-watermark { color: var(--text-muted); font-size: 9px; margin-top: 3px; }
 
         /* MAIN AREA */
         main { flex: 1; height: 100vh; overflow-y: auto; padding: 20px; background: var(--bg-base); }
@@ -713,7 +715,8 @@
                     <div class="brand-logo">AS</div>
                     <div class="brand-text">
                         <h1>ASSA RESTAURANT</h1>
-                        <p>v25 | PRO MAX</p>
+                        <p>v25.8 | PRO MAX</p>
+                        <div class="sidebar-watermark">Made by: ASSA</div>
                     </div>
                 </div>
 
